@@ -22,4 +22,10 @@ RUN apt install --yes wget python && \
     mv SPAdes-3.10.1-Linux/ /opt//spades/
 ENV PATH "/opt/spades/bin:$PATH"
 
+RUN apt install --yes git
+RUN git clone --recursive \
+    https://github.com/chloroExtractorTeam/chloroExtractor.git \
+    /opt/chloroExtractor/
+ENV PATH "/opt/chloroExtractor/bin/:$PATH"
+
 VOLUME /data
