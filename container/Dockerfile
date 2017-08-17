@@ -8,6 +8,7 @@ RUN apt update && apt install --yes \
     libfile-which-perl \
     libipc-run-perl \
     libterm-progressbar-perl \
+    bowtie2 \
     jellyfish
 
 RUN apt install --yes wget python && \
