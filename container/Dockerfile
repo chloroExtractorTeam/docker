@@ -10,6 +10,7 @@ RUN apt update && apt install --yes \
     libterm-progressbar-perl \
     bowtie2 \
     samtools \
+    bedtools \
     jellyfish
 
 RUN apt install --yes wget python && \
