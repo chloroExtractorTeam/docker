@@ -12,6 +12,7 @@ RUN apt update && apt install --yes \
     samtools \
     bedtools \
     r-base \
+    ghostscript \
     jellyfish
 
 RUN apt install --yes wget python && \
