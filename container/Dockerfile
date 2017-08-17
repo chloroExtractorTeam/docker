@@ -11,6 +11,7 @@ RUN apt update && apt install --yes \
     bowtie2 \
     samtools \
     bedtools \
+    r-base \
     jellyfish
 
 RUN apt install --yes wget python && \
