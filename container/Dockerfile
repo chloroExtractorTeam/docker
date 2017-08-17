@@ -13,3 +13,5 @@ RUN apt install --yes wget python && \
     wget http://cab.spbu.ru/files/release3.10.1/SPAdes-3.10.1-Linux.tar.gz && \
     tar -xzf SPAdes-3.10.1-Linux.tar.gz && \
     mv SPAdes-3.10.1-Linux/ /spades/
+
+VOLUME /data
