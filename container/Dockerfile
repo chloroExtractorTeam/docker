@@ -10,6 +10,7 @@ RUN apt update && apt install --yes \
     libterm-progressbar-perl \
     libgraph-perl \
     bowtie2 \
+    ncbi-blast+ \
     samtools \
     bedtools \
     r-base \
