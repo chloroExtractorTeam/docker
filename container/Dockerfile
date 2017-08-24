@@ -8,6 +8,7 @@ RUN apt update && apt install --yes \
     libfile-which-perl \
     libipc-run-perl \
     libterm-progressbar-perl \
+    libgraph-perl \
     bowtie2 \
     samtools \
     bedtools \
