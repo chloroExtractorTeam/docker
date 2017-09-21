@@ -21,7 +21,9 @@ RUN apt install --yes wget python && \
     cd /tmp/ && \
     wget http://cab.spbu.ru/files/release3.10.1/SPAdes-3.10.1-Linux.tar.gz && \
     tar -xzf SPAdes-3.10.1-Linux.tar.gz && \
-    mv SPAdes-3.10.1-Linux/ /opt//spades/
+    mv SPAdes-3.10.1-Linux/ /opt//spades/ && \
+    rm SPAdes-3.10.1-Linux.tar.gz
+
 ENV PATH "/opt/spades/bin:$PATH"
 
 RUN apt install --yes git
