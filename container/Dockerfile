@@ -35,3 +35,7 @@ ENV PATH "/opt/chloroExtractor/bin/:$PATH"
 VOLUME /data
 
 WORKDIR /data
+
+ENTRYPOINT ["/opt/chloroExtractor/bin/ptx"]
+
+CMD ["--help"]
