@@ -33,3 +33,5 @@ RUN git clone -b develop --recursive \
 ENV PATH "/opt/chloroExtractor/bin/:$PATH"
 
 VOLUME /data
+
+WORKDIR /data
