@@ -27,7 +27,8 @@ RUN apt install --yes wget python && \
 ENV PATH "/opt/spades/bin:$PATH"
 
 RUN apt install --yes git
-RUN git clone -b develop --recursive \
+RUN git clone --recursive \
+    --branch v1.0.0 \
     https://github.com/chloroExtractorTeam/chloroExtractor.git \
     /opt/chloroExtractor/
 ENV PATH "/opt/chloroExtractor/bin/:$PATH"
