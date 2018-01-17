@@ -28,9 +28,10 @@ ENV PATH "/opt/spades/bin:$PATH"
 
 RUN apt install --yes git
 RUN git clone --recursive \
-    --branch v1.0.0 \
-    https://github.com/chloroExtractorTeam/chloroExtractor.git \
-    /opt/chloroExtractor/
+              --branch v1.0.0 \
+        https://github.com/chloroExtractorTeam/chloroExtractor.git \
+        /opt/chloroExtractor/ && \
+    rm -rf /opt/chloroExtractor/.git
 ENV PATH "/opt/chloroExtractor/bin/:$PATH"
 
 VOLUME /data
