@@ -2,7 +2,7 @@ FROM ubuntu:xenial
 
 LABEL maintainer="foersterfrank@gmx.de"
 
-RUN apt update && apt install --yes \
+RUN apt update && apt install --yes --no-install-recommends \
     liblog-log4perl-perl \
     libmoose-perl \
     libfile-which-perl \
@@ -25,7 +25,8 @@ RUN apt update && apt install --yes \
     libncurses5-dev \
     libbz2-dev \
     liblzma-dev \
-    python3
+    python3 && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt
 RUN wget -O spades.tar.gz \
