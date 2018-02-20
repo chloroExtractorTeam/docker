@@ -13,7 +13,7 @@ RUN apt update && apt install --yes \
     cd racon && \
     make modules && \
     make tools && \
-    make -j
+    make
 ENV PATH=/opt/racon/bin/:"$PATH"
 
 RUN mkdir pilon-1.22 && \
