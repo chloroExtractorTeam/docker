@@ -14,7 +14,7 @@ RUN apt update && apt install --yes --no-install-recommends \
     make modules && \
     make tools && \
     make && \
-    rm -rf .git
+    find -type d -name ".git" | xargs rm -rf
 
 ENV PATH=/opt/racon/bin/:"$PATH"
 
