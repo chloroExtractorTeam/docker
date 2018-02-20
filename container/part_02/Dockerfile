@@ -4,7 +4,7 @@ LABEL maintainer="foersterfrank@gmx.de"
 
 WORKDIR /opt
 
-RUN apt update && apt install --yes \
+RUN apt update && apt install --yes --no-install-recommends \
         mummer \
 	python-numpy \
 	python-matplotlib \
@@ -13,7 +13,9 @@ RUN apt update && apt install --yes \
     cd racon && \
     make modules && \
     make tools && \
-    make
+    make && \
+    rm -rf .git
+
 ENV PATH=/opt/racon/bin/:"$PATH"
 
 RUN mkdir pilon-1.22 && \
@@ -28,6 +30,7 @@ ENV PYTHONPATH=/opt/lib/python3.5/site-packages/
 ENV PATH=/opt/bin/:"$PATH"
 RUN git clone --branch v0.4.4 https://github.com/rrwick/Unicycler.git /opt/unicycler && \
     cd /opt/unicycler && \
+    rm -rf .git && \
     sed -i 's/str(min(8, multiprocessing.cpu_count/str(min(1, multiprocessing.cpu_count/' setup.py && \
     python3 setup.py install --prefix=/opt/
 
