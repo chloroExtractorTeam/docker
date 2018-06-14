@@ -29,7 +29,7 @@ ENV PATH "/opt/spades/bin:$PATH"
 WORKDIR /opt
 RUN wget -O - https://github.com/chloroExtractorTeam/chloroExtractor/releases/download/v1.0.4/chloroExtractor_v1.0.4.tar.gz | \
     tar xzf - 
-ENV /opt/chloroExtractor_v1.0.4/bin/:$PATH"
+ENV PATH /opt/chloroExtractor_v1.0.4/bin/:$PATH"
 
 VOLUME /data
 
