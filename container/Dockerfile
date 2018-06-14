@@ -26,18 +26,15 @@ RUN apt install --yes wget python && \
 
 ENV PATH "/opt/spades/bin:$PATH"
 
-RUN apt install --yes git
-RUN git clone --recursive \
-              --branch v1.0.3 \
-        https://github.com/chloroExtractorTeam/chloroExtractor.git \
-        /opt/chloroExtractor/ && \
-    rm -rf /opt/chloroExtractor/.git
-ENV PATH "/opt/chloroExtractor/bin/:$PATH"
+WORKDIR /opt
+RUN wget -O - https://github.com/chloroExtractorTeam/chloroExtractor/releases/download/v1.0.4/chloroExtractor_v1.0.4.tar.gz | \
+    tar xzf - 
+ENV /opt/chloroExtractor_v1.0.4/bin/:$PATH"
 
 VOLUME /data
 
 WORKDIR /data
 
-ENTRYPOINT ["/opt/chloroExtractor/bin/ptx"]
+ENTRYPOINT ["/opt/chloroExtractor_v1.0.4/bin/ptx"]
 
 CMD ["--help"]
