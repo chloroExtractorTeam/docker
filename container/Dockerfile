@@ -1,35 +1,27 @@
-FROM ubuntu:xenial
+ARG osversion=v1.0.0
+FROM chloroextractorteam/chloroextractor-dockerbase:${osversion}
 
-LABEL maintainer="foersterfrank@gmx.de"
+ARG VERSION=master
+ARG VCS_REF
+ARG BUILD_DATE
+ARG osversion
 
-RUN apt update && apt install --yes \
-    liblog-log4perl-perl \
-    libmoose-perl \
-    libfile-which-perl \
-    libipc-run-perl \
-    libterm-progressbar-perl \
-    libgraph-perl \
-    bowtie2 \
-    ncbi-blast+ \
-    samtools \
-    bedtools \
-    r-base \
-    ghostscript \
-    jellyfish
+RUN echo "osversion: "${osversion}", VCS_REF: "${VCS_REF}", BUILD_DATE: "${BUILD_DATE}", VERSION: "${VERSION}
 
-RUN apt install --yes wget python && \
-    cd /tmp/ && \
-    wget http://cab.spbu.ru/files/release3.10.1/SPAdes-3.10.1-Linux.tar.gz && \
-    tar -xzf SPAdes-3.10.1-Linux.tar.gz && \
-    mv SPAdes-3.10.1-Linux/ /opt//spades/ && \
-    rm SPAdes-3.10.1-Linux.tar.gz
+LABEL maintainer="frank.foerster@ime.fraunhofer.de" \
+      description="Dockerfile providing the image for our chloroExtractor container" \
+      version=${VERSION} \
+      org.label-schema.vcs-ref=${VCS_REF} \
+      org.label-schema.build-date=${BUILD_DATE} \
+      org.label-schema.vcs-url="https://github.com/chloroExtractorTeam/chloroExtractor-docker.git"
 
-ENV PATH "/opt/spades/bin:$PATH"
-
-WORKDIR /opt
-RUN wget -O - https://github.com/chloroExtractorTeam/chloroExtractor/releases/download/v1.0.4/chloroExtractor_v1.0.4.tar.gz | \
-    tar xzf - 
-ENV PATH "/opt/chloroExtractor_v1.0.4/bin/:$PATH"
+RUN apt install --yes git
+RUN git clone --recursive \
+              --branch ${VERSION} \
+        https://github.com/chloroExtractorTeam/chloroExtractor.git \
+        /opt/chloroExtractor/ && \
+    rm -rf /opt/chloroExtractor/.git
+ENV PATH "/opt/chloroExtractor/bin/:$PATH"
 
 VOLUME /data
 
