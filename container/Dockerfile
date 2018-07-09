@@ -26,6 +26,6 @@ VOLUME /data
 
 WORKDIR /data
 
-ENTRYPOINT ["/opt/chloroExtractor_v1.0.4/bin/ptx"]
+ENTRYPOINT ["/opt/chloroExtractor/bin/ptx"]
 
 CMD ["--help"]
