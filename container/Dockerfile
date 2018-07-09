@@ -15,7 +15,6 @@ LABEL maintainer="frank.foerster@ime.fraunhofer.de" \
       org.label-schema.build-date=${BUILD_DATE} \
       org.label-schema.vcs-url="https://github.com/chloroExtractorTeam/chloroExtractor-docker.git"
 
-RUN apt install --yes git
 RUN git clone --recursive \
               --branch ${VERSION} \
         https://github.com/chloroExtractorTeam/chloroExtractor.git \
