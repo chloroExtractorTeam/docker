@@ -50,7 +50,7 @@ RUN apt update && apt install --yes --no-install-recommends \
 	python-numpy \
 	python-matplotlib \
 	time && \
-    git clone --branch 0.5.0 https://github.com/isovic/racon.git racon && \
+    git clone --branch 1.3.1 https://github.com/isovic/racon.git racon && \
     cd racon && \
     make modules && \
     make tools && \
