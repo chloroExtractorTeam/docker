@@ -1,5 +1,12 @@
 #!/bin/bash
 export BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+# clone chloroextractor repository into /tmp and extract the right VCS_REF
+git clone https://github.com/chloroExtractorTeam/chloroExtractor.git /tmp/chloro
+cd /tmp/chloro
+git checkout ${SOURCE_BRANCH}
+export GIT_SHA1=$(git rev-parse HEAD)
+
 export VCS_REF=$(echo ${GIT_SHA1} | cut -b 1-7)
 
 env
